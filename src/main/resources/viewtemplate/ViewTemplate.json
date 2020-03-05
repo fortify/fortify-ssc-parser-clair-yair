@@ -1,0 +1,76 @@
+[
+	[
+		{
+			"type": "template",
+			"title": "Package",
+			"templateId": "TITLEBOX",
+			"items": [
+				{
+					"type": "template",
+					"title": "Namespace",
+					"key": "customAttributes.namespace_name",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Name",
+					"key": "customAttributes.package_name",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Installed Version",
+					"key": "customAttributes.installed_version",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Fixed in Version",
+					"key": "customAttributes.cve_fixed_version",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				}
+			]
+		}
+	],
+	[
+		{
+			"type": "template",
+			"title": "CVE",
+			"templateId": "TITLEBOX",
+			"items": [
+				{
+					"type": "template",
+					"title": "Name",
+					"key": "customAttributes.cve_name",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Severity",
+					"key": "customAttributes.cve_severity",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				},
+				{
+					"type": "template",
+					"title": "Link",
+					"key": "customAttributes.cve_link",
+					"templateId": "SIMPLE",
+					"dataType": "string"
+				}
+			]
+		},
+		{
+			"type": "template",
+			"title": "Description",
+			"key": "brief",
+			"templateId": "COLLAPSE",
+			"dataType": "string"
+		}
+	]
+]
