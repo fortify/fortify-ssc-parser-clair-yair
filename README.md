@@ -63,6 +63,13 @@ EOF
 docker run -v $PWD/yair.config:/opt/yair/config/config.yaml:ro --link clair:clair yfoelling/yair node:10.14.2-jessie > node_10.14.2-jessie.yair.json
 
 ```
+
+## IDE's
+
+This project uses Lombok. In order to have your IDE compile this project without errors, 
+you may need to add Lombok support to your IDE. Please see https://projectlombok.org/setup/overview 
+for more information.
+
 # Licensing
 
 See [LICENSE.TXT](LICENSE.TXT)
