@@ -63,3 +63,7 @@ EOF
 docker run -v $PWD/yair.config:/opt/yair/config/config.yaml:ro --link clair:clair yfoelling/yair node:10.14.2-jessie > node_10.14.2-jessie.yair.json
 
 ```
+# Licensing
+
+See [LICENSE.TXT](LICENSE.TXT)
+
