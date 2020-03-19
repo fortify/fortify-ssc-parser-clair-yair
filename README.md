@@ -12,7 +12,7 @@ by the Yair command line interface for Clair. See the [Usage](#Usage) section fo
 * **Automated builds**: https://travis-ci.com/fortify-ps/fortify-ssc-parser-clair-yair
 * **Binaries**: https://bintray.com/beta/#/fortify-ps/binaries/fortify-ssc-parser-clair-yair?tab=files  
   Sort by `Updated` column to find latest
-* **Sample input**: [src/test/resources/node_10.14.2-jessie.yair.json](src/test/resources/node_10.14.2-jessie.yair.json)
+* **Sample inputs**: [src/test/resources](src/test/resources)
 * **Clair and Yair resources**:
   * Yair: https://github.com/yfoelling/yair
   * Clair GitHub repository: https://github.com/quay/clair/tree/v2.1.2
