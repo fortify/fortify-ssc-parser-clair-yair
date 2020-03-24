@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.fortify.plugin.api.BasicVulnerabilityBuilder.Priority;
@@ -12,12 +13,13 @@ import com.fortify.plugin.api.FortifyAnalyser;
 import com.fortify.plugin.api.FortifyKingdom;
 import com.fortify.plugin.api.ScanData;
 import com.fortify.plugin.api.ScanParsingException;
+import com.fortify.plugin.api.StaticVulnerabilityBuilder;
+import com.fortify.plugin.api.VulnerabilityHandler;
 import com.fortify.ssc.parser.clair.yair.CustomVulnAttribute;
 import com.fortify.ssc.parser.clair.yair.domain.Vulnerability;
 import com.fortify.util.ssc.parser.EngineTypeHelper;
+import com.fortify.util.ssc.parser.HandleDuplicateIdVulnerabilityHandler;
 import com.fortify.util.ssc.parser.ScanDataStreamingJsonParser;
-import com.fortify.util.ssc.parser.VulnerabilityBuilder;
-import com.fortify.util.ssc.parser.VulnerabilityBuilder.CustomStaticVulnerabilityBuilder;
 
 public class VulnerabilitiesParser {
 	private static final String ENGINE_TYPE = EngineTypeHelper.getEngineType();
@@ -33,33 +35,42 @@ public class VulnerabilitiesParser {
 	}};
 	
 	private final ScanData scanData;
-	private final VulnerabilityBuilder vulnerabilityBuilder;
+	private final VulnerabilityHandler vulnerabilityHandler;
 
-    public VulnerabilitiesParser(final ScanData scanData, final VulnerabilityBuilder vulnerabilityBuilder) {
+    public VulnerabilitiesParser(final ScanData scanData, final VulnerabilityHandler vulnerabilityHandler) {
     	this.scanData = scanData;
-		this.vulnerabilityBuilder = vulnerabilityBuilder;
+		this.vulnerabilityHandler = new HandleDuplicateIdVulnerabilityHandler(vulnerabilityHandler);
 	}
     
     /**
-	 * Main method to commence parsing the SARIF document provided by the
-	 * configured {@link ScanData}.
+	 * Main method to commence parsing the input provided by the configured {@link ScanData}.
 	 * @throws ScanParsingException
 	 * @throws IOException
 	 */
 	public final void parse() throws ScanParsingException, IOException {
 		new ScanDataStreamingJsonParser()
 			.expectedStartTokens(JsonToken.START_ARRAY)
-			.handler("/*", Vulnerability.class, this::buildVulnerability)
+			.handler("/*", Vulnerability.class, this::buildVulnerabilityIfValid)
 			.parse(scanData);
 	}
 	
+	/**
+	 * Call the {@link #buildVulnerability(Vulnerability)} method if the given {@link Vulnerability}
+	 * provides valid vulnerability data.
+	 * @param finding
+	 */
+	private final void buildVulnerabilityIfValid(Vulnerability vuln) {
+		if ( vuln!=null && StringUtils.isNotBlank(vuln.getCve_name()) ) {
+			buildVulnerability(vuln);
+		}
+	}
+	
+	/**
+	 * Build the vulnerability from the given {@link Vulnerability}, using the configured {@link VulnerabilityHandler}.
+	 * @param finding
+	 */
 	private final void buildVulnerability(Vulnerability vuln) {
-    	String cve = vuln.getCve_name();
-		String uniqueId = DigestUtils.sha256Hex(cve);
-		CustomStaticVulnerabilityBuilder vb = vulnerabilityBuilder.startStaticVulnerability();
-		// TODO For now we let CustomStaticVulnerabilityBuilder handle duplicate id's
-		//      We should check whether there's a better way to generate unique id
-		vb.setInstanceId(uniqueId);
+		StaticVulnerabilityBuilder vb = vulnerabilityHandler.startStaticVulnerability(getInstanceId(vuln));
 		
 		// Set meta-data
 		vb.setEngineType(ENGINE_TYPE);
@@ -89,4 +100,14 @@ public class VulnerabilitiesParser {
 		
 		vb.completeVulnerability();
     }
+
+	/**
+	 * Calculate the issue instance id, using a combination of package name, installed version, and CVE name
+	 */
+	private final String getInstanceId(Vulnerability vuln) {
+		String packageName = StringUtils.defaultString(vuln.getPackage_name(), "x");
+		String installedVersion = StringUtils.defaultString(vuln.getInstalled_version(), "x");
+		String cve = vuln.getCve_name();
+		return DigestUtils.sha256Hex(String.join("|", packageName, installedVersion, cve));
+	}
 }
