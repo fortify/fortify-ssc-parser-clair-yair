@@ -5,7 +5,7 @@ This Fortify SSC parser plugin allows for importing scan results from Clair (Vul
 Clair itself doesn't provide any file-based reports; as such this parser plugin parses reports generated
 by the Yair command line interface for Clair. See the [Usage](#Usage) section for more information.
 
-### Related Links
+### <a name="related-links">Related Links</a>
 
 * **Downloads**:  
   _Beta versions may be unstable or non-functional. The `*-licenseReport.zip` and `*-dependencySources.zip` files are for informational purposes only and do not need to be downloaded._
@@ -20,12 +20,12 @@ by the Yair command line interface for Clair. See the [Usage](#Usage) section fo
 * **Alternatives**:
 	* SSC Parser Plugin for Clair REST API: https://github.com/fortify-ps/fortify-ssc-parser-clair-rest
 
-## Usage
+## <a name="usage">Usage</a>
 
 The following sections describe how to install and use the plugin. For generic information
 about how to install and use SSC parser plugins, please see the Fortify SSC documentation.
 
-### Plugin Install & Upgrade
+### <a name="plugin-install--upgrade">Plugin Install & Upgrade</a>
 
 * Obtain the plugin binary jar file
 	* Either download from Bintray (see [Related Links](#related-links)) 
@@ -38,7 +38,7 @@ about how to install and use SSC parser plugins, please see the Fortify SSC docu
 	* Upload the plugin jar file
 	* Enable the plugin by clicking the `ENABLE` button
   
-### Plugin Uninstall
+### <a name="plugin-uninstall">Plugin Uninstall</a>
 
 * In Fortify Software Security Center:
 	* Navigate to Administration->Plugins->Parsers
@@ -46,7 +46,7 @@ about how to install and use SSC parser plugins, please see the Fortify SSC docu
 	* Click the `DISABLE` button
 	* Click the `REMOVE` button 
 
-### Obtain results
+### <a name="obtain-results">Obtain results</a>
 
 Please see the Yair documentation for detailed usage instructions. Note that the SSC parser plugin for Yair 
 expects a JSON file as input, so Yair will need to be configured to generate reports in JSON format.
@@ -106,7 +106,7 @@ docker logs clair
 ```
 
 
-### Upload results
+### <a name="upload-results">Upload results</a>
 
 SSC web interface (manual upload):
 
@@ -129,18 +129,18 @@ SSC clients (FortifyClient, Maven plugin, ...):
 
 
 
-## Information for plugin developers
+## <a name="information-for-plugin-developers">Information for plugin developers</a>
 
 The following sections provide information that may be useful for developers of this 
 parser plugin.
 
-### IDE's
+### <a name="ides">IDE's</a>
 
 This project uses Lombok. In order to have your IDE compile this project without errors, 
 you may need to add Lombok support to your IDE. Please see https://projectlombok.org/setup/overview 
 for more information.
 
-### Gradle
+### <a name="gradle">Gradle</a>
 
 It is strongly recommended to build this project using the included Gradle Wrapper
 scripts; using other Gradle versions may result in build errors and other issues.
@@ -148,7 +148,7 @@ scripts; using other Gradle versions may result in build errors and other issues
 The Gradle build uses various helper scripts from https://github.com/fortify-ps/gradle-helpers;
 please refer to the documentation and comments in included scripts for more information. 
 
-### Commonly used commands
+### <a name="commonly-used-commands">Commonly used commands</a>
 
 All commands listed below use Linux/bash notation; adjust accordingly if you
 are running on a different platform. All commands are to be executed from
@@ -168,7 +168,7 @@ the main project directory.
 Note that the version management tasks operate only on the local repository; you will need to manually
 push any changes (including tags and branches) to the remote repository.
 
-### Versioning
+### <a name="versioning">Versioning</a>
 
 The various version-related Gradle tasks assume the following versioning methodology:
 
@@ -178,7 +178,7 @@ The various version-related Gradle tasks assume the following versioning methodo
 	* However, note that the Gradle build may be unable to identify a correct version number for the project
 	* As such, only builds from tagged versions or from a `<version>-SNAPSHOT` branch should be published to a Maven repository
 
-### Automated Builds & publishing
+### <a name="automated-builds--publishing">Automated Builds & publishing</a>
 
 Travis-CI builds are automatically triggered when there is any change in the project repository,
 for example due to pushing changes, or creating tags or branches. If applicable, binaries and related 
@@ -191,6 +191,6 @@ artifacts are automatically published to Bintray using the `bintrayUpload` task:
 See the [Related Links](#related-links) section for the relevant Travis-CI and Bintray links.
 
 
-# Licensing
+# <a name="licensing">Licensing</a>
 See [LICENSE.TXT](LICENSE.TXT)
 
