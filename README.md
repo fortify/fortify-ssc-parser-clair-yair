@@ -35,8 +35,8 @@ by the Yair command line interface for Clair. See the [Usage](#Usage) section fo
 
 * **Downloads**:  
   _Beta versions may be unstable or non-functional. The `*-licenseReport.zip` and `*-dependencySources.zip` files are for informational purposes only and do not need to be downloaded._
-	* **Release versions**: https://bintray.com/package/files/fortify-ps/binaries/fortify-ssc-parser-clair-yair-release?order=desc&sort=fileLastModified&basePath=&tab=files  
-	* **Beta versions**: https://bintray.com/package/files/fortify-ps/binaries/fortify-ssc-parser-clair-yair-beta?order=desc&sort=fileLastModified&basePath=&tab=files
+	* **Release versions**: https://bintray.com/package/files/fortify-ps/release/fortify-ssc-parser-clair-yair?order=desc&sort=fileLastModified&basePath=&tab=files  
+	* **Beta versions**: https://bintray.com/package/files/fortify-ps/beta/fortify-ssc-parser-clair-yair?order=desc&sort=fileLastModified&basePath=&tab=files
 	* **Sample input files**: [sampleData](sampleData)
 * **GitHub**: https://github.com/fortify-ps/fortify-ssc-parser-clair-yair
 * **Automated builds**: https://travis-ci.com/fortify-ps/fortify-ssc-parser-clair-yair
