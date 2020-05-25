@@ -77,7 +77,7 @@ public class VulnerabilitiesParser {
 		vb.setKingdom(FortifyKingdom.ENVIRONMENT.getKingdomName());
 		vb.setAnalyzer(FortifyAnalyser.CONFIGURATION.getAnalyserName());
 		vb.setCategory("Insecure Deployment");
-		vb.setSubCategory("Vulnerable Container");
+		vb.setSubCategory("Unpatched Application");
 		
 		// Set mandatory values to JavaDoc-recommended values
 		vb.setAccuracy(5.0f);
