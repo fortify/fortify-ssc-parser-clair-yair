@@ -41,7 +41,6 @@ import com.fortify.plugin.api.ScanData;
 import com.fortify.plugin.api.ScanEntry;
 import com.fortify.plugin.api.StaticVulnerabilityBuilder;
 import com.fortify.plugin.api.VulnerabilityHandler;
-import com.fortify.ssc.parser.clair.yair.ClairYairParserPlugin;
 
 class ClairYairParserPluginTest {
 	private static final String TEST_RESOURCE_NAME = "node_10.14.2-jessie.yair.json";
