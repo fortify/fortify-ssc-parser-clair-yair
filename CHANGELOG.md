@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.2.3](https://www.github.com/fortify-ps/fortify-ssc-parser-clair-yair/compare/v1.2.2...v1.2.3) (2022-05-03)
+
+
+### Bug Fixes
+
+* Add missing changelog entry in previous release ([672dfca](https://www.github.com/fortify-ps/fortify-ssc-parser-clair-yair/commit/672dfca2adfcd7da6e40b3db4128370d7e2dc588))
+* Update (potentially vulnerable) dependency versions ([4855f17](https://www.github.com/fortify-ps/fortify-ssc-parser-clair-yair/commit/4855f17e628bbd4c4a2ad15b521c31704189f650))
+
 ### [1.2.2](https://www.github.com/fortify-ps/fortify-ssc-parser-clair-yair/compare/v1.2.1...v1.2.2) (2022-05-03)
 
 
