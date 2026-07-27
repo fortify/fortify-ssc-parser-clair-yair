@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/fortify/fortify-ssc-parser-clair-yair/compare/v1.2.3...v1.2.4) (2026-07-27)
+
+
+### Bug Fixes
+
+* Update vendor name & URL to OpenText ([#13](https://github.com/fortify/fortify-ssc-parser-clair-yair/issues/13)) ([29a0dee](https://github.com/fortify/fortify-ssc-parser-clair-yair/commit/29a0dee585db66e360d4bebe1a5127b0f3b17b45))
+
 ### [1.2.3](https://www.github.com/fortify-ps/fortify-ssc-parser-clair-yair/compare/v1.2.2...v1.2.3) (2022-05-03)
 
 
